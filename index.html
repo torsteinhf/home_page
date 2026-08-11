@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Torstein Hauge Fossnes</title>
+<meta name="description" content="Torstein Hauge Fossnes — Computer Science student at NTNU, specializing in AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header class="nav">
+  <a class="nav__mark" href="index.html">THF</a>
+  <nav class="nav__links">
+    <a href="index.html" class="is-active">Home</a>
+    <a href="cv.html">CV</a>
+    <a href="projects.html">Projects</a>
+  </nav>
+  <a class="nav__cv" href="torstein-hauge-fossnes-cv.pdf" target="_blank" rel="noopener">Download CV ↓</a>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__inner">
+      <p class="hero__eyebrow">
+        <span>Computer Science</span>
+        <span class="hero__sep">—</span>
+        <span>NTNU</span>
+      </p>
+      <!-- JS splits this into lines. \n marks a forced line break. -->
+      <h1 class="hero__name" data-text="Torstein Hauge|Fossnes" aria-label="Torstein Hauge Fossnes"></h1>
+      <div class="hero__rule"></div>
+      <p class="hero__sub">Specializing in AI, with exchange semesters at UC&nbsp;Berkeley and ETH&nbsp;Zürich.</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="cv.html">View CV</a>
+        <a class="btn btn--ghost" href="mailto:torsteinhf@gmail.com">Contact</a>
+      </div>
+    </div>
+    <div class="hero__foot">
+      <span>Available from 2027</span>
+      <span aria-hidden="true">Scroll ↓</span>
+    </div>
+  </section>
+
+  <!-- JOURNEY: sticky scroll section -->
+  <section class="journey" aria-label="Academic journey">
+    <div class="journey__stage">
+      <div class="journey__layout">
+
+        <!-- Left: transitions between stops -->
+        <div class="journey__left">
+          <div class="journey__meta">
+            <span class="journey__meta-label">Journey</span>
+            <div class="journey__counter">
+              <span class="journey__num">01</span>
+              <span class="journey__of">/ 05</span>
+            </div>
+          </div>
+
+          <!-- Large ghost number -->
+          <div class="journey__ghost-num" aria-hidden="true">01</div>
+
+          <div class="journey__stops-wrap">
+            <div class="journey__stop is-active" data-index="0">
+              <p class="journey__loc">Ås, Norway</p>
+              <h2 class="journey__school">Upper<br>Secondary</h2>
+              <p class="journey__period">2018 — 2021</p>
+              <p class="journey__desc">Graduated with a focus on mathematics and natural sciences. First serious encounter with programming.</p>
+            </div>
+            <div class="journey__stop" data-index="1">
+              <p class="journey__loc">Oslo, Norway</p>
+              <h2 class="journey__school">BI Norwegian<br>Business School</h2>
+              <p class="journey__period">2023 — 2024</p>
+              <p class="journey__desc">First year of Bachelor studies in Business Administration before transferring to a Computer Science programme.</p>
+            </div>
+            <div class="journey__stop" data-index="2">
+              <p class="journey__loc">Trondheim, Norway</p>
+              <h2 class="journey__school">NTNU<br>Computer Science</h2>
+              <p class="journey__period">2023 — 2028</p>
+              <p class="journey__desc">Five-year Master's programme with a specialization in artificial intelligence and machine learning.</p>
+            </div>
+            <div class="journey__stop" data-index="3">
+              <p class="journey__loc">Berkeley, USA</p>
+              <h2 class="journey__school">UC Berkeley<br>Exchange</h2>
+              <p class="journey__period">2025 — 2026</p>
+              <p class="journey__desc">Exchange semester at one of the world's leading technical universities, focusing on advanced AI coursework.</p>
+            </div>
+            <div class="journey__stop" data-index="4">
+              <p class="journey__loc">Zürich, Switzerland</p>
+              <h2 class="journey__school">ETH Zürich<br>Exchange</h2>
+              <p class="journey__period">2026 — 2027</p>
+              <p class="journey__desc">Upcoming exchange at ETH Zürich, consistently ranked among the top engineering schools globally.</p>
+            </div>
+          </div>
+
+          <div class="journey__scrubber">
+            <div class="journey__scrubber-fill"></div>
+          </div>
+        </div>
+
+        <!-- Right: large decorative SVG map -->
+        <div class="journey__right" aria-hidden="true">
+          <svg class="journey__svg" viewBox="0 0 460 580" preserveAspectRatio="xMidYMid meet">
+
+            <!-- Graticule grid -->
+            <line class="journey__grid" x1="0"   y1="96"  x2="460" y2="96"/>
+            <line class="journey__grid" x1="0"   y1="192" x2="460" y2="192"/>
+            <line class="journey__grid" x1="0"   y1="290" x2="460" y2="290"/>
+            <line class="journey__grid" x1="0"   y1="388" x2="460" y2="388"/>
+            <line class="journey__grid" x1="0"   y1="484" x2="460" y2="484"/>
+            <line class="journey__grid" x1="92"  y1="0"   x2="92"  y2="580"/>
+            <line class="journey__grid" x1="184" y1="0"   x2="184" y2="580"/>
+            <line class="journey__grid" x1="276" y1="0"   x2="276" y2="580"/>
+            <line class="journey__grid" x1="368" y1="0"   x2="368" y2="580"/>
+
+            <!-- Background atmosphere rings -->
+            <circle class="journey__bg-ring" cx="230" cy="295" r="220"/>
+            <circle class="journey__bg-ring journey__bg-ring--sm" cx="230" cy="295" r="130"/>
+
+            <!-- Route track (faint).
+                 Waypoints: (70,505) (150,410) (225,305) (320,190) (400,90)
+                 S-curved path: control points are pushed left/right of the
+                 direct line to create visible bowing between each stop. -->
+            <path class="journey__path-track"
+              d="M 70 505
+                 C 38 488, 112 432, 150 410
+                 C 188 388, 246 302, 225 305
+                 C 204 308, 285 198, 320 190
+                 C 355 182, 385 116, 400 90"/>
+
+            <!-- Route fill (drawn by JS via stroke-dashoffset) -->
+            <path class="journey__path-fill"
+              d="M 70 505
+                 C 38 488, 112 432, 150 410
+                 C 188 388, 246 302, 225 305
+                 C 204 308, 285 198, 320 190
+                 C 355 182, 385 116, 400 90"/>
+
+            <!-- Waypoint 0: Ås -->
+            <g class="journey__wp" data-index="0">
+              <circle class="journey__wp-outer" cx="70"  cy="505" r="34"/>
+              <circle class="journey__wp-inner" cx="70"  cy="505" r="19"/>
+              <circle class="journey__wp-core"  cx="70"  cy="505" r="5"/>
+              <text class="journey__wp-text" x="87"  y="501">ÅS</text>
+            </g>
+
+            <!-- Waypoint 1: Oslo / BI -->
+            <g class="journey__wp" data-index="1">
+              <circle class="journey__wp-outer" cx="150" cy="410" r="34"/>
+              <circle class="journey__wp-inner" cx="150" cy="410" r="19"/>
+              <circle class="journey__wp-core"  cx="150" cy="410" r="5"/>
+              <text class="journey__wp-text" x="167" y="406">OSLO</text>
+            </g>
+
+            <!-- Waypoint 2: Trondheim -->
+            <g class="journey__wp" data-index="2">
+              <circle class="journey__wp-outer" cx="225" cy="305" r="34"/>
+              <circle class="journey__wp-inner" cx="225" cy="305" r="19"/>
+              <circle class="journey__wp-core"  cx="225" cy="305" r="5"/>
+              <text class="journey__wp-text" x="242" y="301">TRONDHEIM</text>
+            </g>
+
+            <!-- Waypoint 3: Berkeley -->
+            <g class="journey__wp" data-index="3">
+              <circle class="journey__wp-outer" cx="320" cy="190" r="34"/>
+              <circle class="journey__wp-inner" cx="320" cy="190" r="19"/>
+              <circle class="journey__wp-core"  cx="320" cy="190" r="5"/>
+              <text class="journey__wp-text" x="337" y="186">BERKELEY</text>
+            </g>
+
+            <!-- Waypoint 4: Zürich -->
+            <g class="journey__wp" data-index="4">
+              <circle class="journey__wp-outer" cx="400" cy="90"  r="34"/>
+              <circle class="journey__wp-inner" cx="400" cy="90"  r="19"/>
+              <circle class="journey__wp-core"  cx="400" cy="90"  r="5"/>
+              <text class="journey__wp-text" x="412" y="83">ZÜRICH</text>
+            </g>
+
+          </svg>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="intro">
+    <p class="intro__lead reveal">A computer science student at NTNU, <span>building toward a specialization in AI — with stops in California and Switzerland along the way.</span></p>
+  </section>
+
+  <!-- CTA CARDS -->
+  <div class="cta-row">
+    <a class="cta-card reveal" href="cv.html">
+      <div>
+        <h3>Curriculum Vitae</h3>
+        <p>Education, work experience, and technical skills — the full picture.</p>
+      </div>
+      <span class="cta-card__arrow">View CV →</span>
+    </a>
+    <a class="cta-card reveal" href="projects.html">
+      <div>
+        <h3>Projects</h3>
+        <p>Things I've built, with write-ups and links to the code.</p>
+      </div>
+      <span class="cta-card__arrow">View projects →</span>
+    </a>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a href="mailto:torsteinhf@gmail.com">torsteinhf@gmail.com</a>
+    <a href="https://www.linkedin.com/in/torstein-hauge-fossnes" target="_blank" rel="noopener">LinkedIn ↗</a>
+  </div>
+  <p class="site-footer__note">Torstein Hauge Fossnes</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
