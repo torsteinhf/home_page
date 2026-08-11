@@ -10,15 +10,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const raw = nameEl.dataset.text || "";
     nameEl.textContent = "";
 
-    const startDelay = 200; // ms after eyebrow starts
-    const charDelay  = 26;  // ms between each character
+    const startDelay = 200;
+    const charDelay  = 26;
     let charIndex = 0;
 
     for (let i = 0; i < raw.length; i++) {
       const ch = raw[i];
 
       if (ch === "|") {
-        // Force a new line
         nameEl.appendChild(document.createElement("br"));
       } else if (ch === " ") {
         const sp = document.createElement("span");
@@ -69,76 +68,262 @@ document.addEventListener("DOMContentLoaded", () => {
   const journey = document.querySelector(".journey");
   if (!journey) return;
 
-  const stops       = journey.querySelectorAll(".journey__stop");
-  const numEl       = journey.querySelector(".journey__num");
-  const ghostNum    = journey.querySelector(".journey__ghost-num");
-  const pathFill    = journey.querySelector(".journey__path-fill");
-  const waypoints   = journey.querySelectorAll(".journey__wp");
-  const scrubFill   = journey.querySelector(".journey__scrubber-fill");
+  const stops     = journey.querySelectorAll(".journey__stop");
+  const numEl     = journey.querySelector(".journey__num");
+  const ghostNum  = journey.querySelector(".journey__ghost-num");
+  const scrubFill = journey.querySelector(".journey__scrubber-fill");
 
-  const NUM_STOPS = stops.length; // 4
-
-  // Set up the animated path
-  let pathLength = 0;
-  if (pathFill) {
-    pathLength = pathFill.getTotalLength();
-    pathFill.style.strokeDasharray  = String(pathLength);
-    pathFill.style.strokeDashoffset = String(pathLength);
-  }
+  const NUM_STOPS = stops.length;
 
   if (reduceMotion) {
     stops.forEach((s) => { s.classList.add("is-active"); s.style.position = "relative"; });
-    waypoints.forEach((w) => w.classList.add("is-active"));
-    if (pathFill) pathFill.style.strokeDashoffset = "0";
     return;
   }
 
+  /* ---------------------------------------------
+     Globe
+  --------------------------------------------- */
+  const GLOBE_STOPS = [
+    [10.8,   59.7],   // Ås
+    [10.7,   59.9],   // Oslo
+    [10.4,   63.4],   // Trondheim
+    [-122.3, 37.9],   // Berkeley
+    [8.5,    47.4],   // Zürich
+  ];
+
+  const GLOBE_LABELS = ["ÅS", "OSLO", "TRONDHEIM", "BERKELEY", "ZÜRICH"];
+
+  function initGlobe(canvas) {
+    const ctx = canvas.getContext("2d");
+    let world = null;
+    let landFeature = null;
+    let graticuleFeature = null;
+    let rotation = [-GLOBE_STOPS[0][0], -GLOBE_STOPS[0][1], 0];
+    let scaleFactor = 1;
+    let currentStopIdx = 0;
+    let animId = null;
+    let idleAnimId = null;
+    let pulseT = 0;
+
+    const projection = d3.geoOrthographic().clipAngle(90).translate([0, 0]);
+    const pathGen = d3.geoPath(projection, ctx);
+
+    function cssSize() {
+      return { w: canvas.offsetWidth, h: canvas.offsetHeight };
+    }
+
+    function resize() {
+      const dpr = devicePixelRatio || 1;
+      const { w, h } = cssSize();
+      canvas.width  = w * dpr;
+      canvas.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      render();
+    }
+
+    function render() {
+      if (!world) return;
+      const { w, h } = cssSize();
+      const baseR = Math.min(w, h) * 1.35;
+      const r = baseR * scaleFactor;
+
+      projection.scale(r).rotate(rotation).translate([w / 2, h / 2]);
+
+      ctx.clearRect(0, 0, w, h);
+
+      // Ocean
+      ctx.beginPath();
+      pathGen({ type: "Sphere" });
+      ctx.fillStyle = "#090909";
+      ctx.fill();
+
+      // Graticule
+      ctx.beginPath();
+      pathGen(graticuleFeature);
+      ctx.strokeStyle = "rgba(255,255,255,0.045)";
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+
+      // Land
+      ctx.beginPath();
+      pathGen(landFeature);
+      ctx.fillStyle = "#1c1c1c";
+      ctx.fill();
+      ctx.strokeStyle = "#2a2a2a";
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+
+      // Globe outline
+      ctx.beginPath();
+      pathGen({ type: "Sphere" });
+      ctx.strokeStyle = "rgba(255,255,255,0.08)";
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      // Active location dot
+      const [lon, lat] = GLOBE_STOPS[currentStopIdx];
+      const pt = projection([lon, lat]);
+      if (pt) {
+        const [px, py] = pt;
+        const pulse = (Math.sin(pulseT) + 1) / 2;
+
+        // Outer glow ring
+        ctx.beginPath();
+        ctx.arc(px, py, 13 + pulse * 5, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(94,143,110,${0.10 + pulse * 0.12})`;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        // Inner ring
+        ctx.beginPath();
+        ctx.arc(px, py, 7, 0, Math.PI * 2);
+        ctx.strokeStyle = "rgba(94,143,110,0.5)";
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        // Core dot
+        ctx.beginPath();
+        ctx.arc(px, py, 3.5, 0, Math.PI * 2);
+        ctx.fillStyle = "#5e8f6e";
+        ctx.fill();
+
+        // Label with connector line
+        ctx.beginPath();
+        ctx.moveTo(px + 14, py);
+        ctx.lineTo(px + 26, py);
+        ctx.strokeStyle = "rgba(94,143,110,0.55)";
+        ctx.lineWidth = 0.75;
+        ctx.stroke();
+
+        ctx.font = "10px 'IBM Plex Mono', monospace";
+        if ("letterSpacing" in ctx) ctx.letterSpacing = "0.08em";
+        ctx.fillStyle = "rgba(237,234,227,0.7)";
+        ctx.textBaseline = "middle";
+        ctx.fillText(GLOBE_LABELS[currentStopIdx], px + 31, py);
+      }
+    }
+
+    function startIdleLoop() {
+      if (idleAnimId) return;
+      let last = null;
+      function loop(ts) {
+        if (last !== null) pulseT += (ts - last) * 0.0022;
+        last = ts;
+        render();
+        idleAnimId = requestAnimationFrame(loop);
+      }
+      idleAnimId = requestAnimationFrame(loop);
+    }
+
+    function stopIdleLoop() {
+      if (idleAnimId) { cancelAnimationFrame(idleAnimId); idleAnimId = null; }
+    }
+
+    function rotateTo(index) {
+      stopIdleLoop();
+      if (animId) cancelAnimationFrame(animId);
+
+      const fromRot = [...rotation];
+      const toStop  = GLOBE_STOPS[index];
+
+      // Scale duration and zoom depth by great-circle distance
+      const dist       = d3.geoDistance([-fromRot[0], -fromRot[1]], [toStop[0], toStop[1]]);
+      const normalized = Math.min(1, dist / (Math.PI * 0.5)); // 0 = same spot, 1 = quarter-globe
+      const duration   = 1600 + normalized * 400; // 1.6s nearby → 3s distant
+      const zoomDepth  = 0.05 + normalized * 0.63; // barely zoom nearby, full zoom for long arcs
+
+      const start = performance.now();
+
+      const interp = d3.geoInterpolate(
+        [-fromRot[0], -fromRot[1]],
+        [toStop[0], toStop[1]]
+      );
+
+      currentStopIdx = index;
+
+      function step(now) {
+        const raw = Math.min(1, (now - start) / duration);
+        const t = raw < 0.5 ? 2 * raw * raw : -1 + (4 - 2 * raw) * raw;
+
+        scaleFactor = 1 - Math.sin(raw * Math.PI) * zoomDepth;
+
+        const pt = interp(t);
+        rotation = [-pt[0], -pt[1], 0];
+
+        render();
+
+        if (raw < 1) {
+          animId = requestAnimationFrame(step);
+        } else {
+          rotation = [-toStop[0], -toStop[1], 0];
+          scaleFactor = 1;
+          render();
+          animId = null;
+          startIdleLoop();
+        }
+      }
+
+      animId = requestAnimationFrame(step);
+    }
+
+    fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json")
+      .then((r) => r.json())
+      .then((data) => {
+        world = data;
+        landFeature      = topojson.feature(data, data.objects.land);
+        graticuleFeature = d3.geoGraticule()();
+        resize();
+        startIdleLoop();
+      });
+
+    new ResizeObserver(resize).observe(canvas);
+
+    return { rotateTo };
+  }
+
+  const globeCanvas = document.getElementById("globe-canvas");
+  let globe = null;
+  if (globeCanvas && typeof d3 !== "undefined" && typeof topojson !== "undefined") {
+    globe = initGlobe(globeCanvas);
+  }
+
+  /* ---------------------------------------------
+     Scroll logic
+  --------------------------------------------- */
   let activeIndex = 0;
   let ticking = false;
 
-  // Initialise first stop as active
   stops[0].classList.add("is-active");
-  waypoints[0].classList.add("is-active");
 
   function setActive(newIndex) {
     if (newIndex === activeIndex) return;
-    const prev = activeIndex;
     activeIndex = newIndex;
 
     stops.forEach((s, i) => {
       s.classList.remove("is-active", "is-past");
-      if (i === activeIndex) s.classList.add("is-active");
-      else if (i < activeIndex) s.classList.add("is-past");
+      if (i === activeIndex)      s.classList.add("is-active");
+      else if (i < activeIndex)   s.classList.add("is-past");
     });
 
-    waypoints.forEach((w, i) => w.classList.toggle("is-active", i === activeIndex));
-
     const label = String(activeIndex + 1).padStart(2, "0");
-    if (numEl) numEl.textContent = label;
-    if (ghostNum) ghostNum.textContent = label;
+    if (numEl)     numEl.textContent = label;
+    if (ghostNum)  ghostNum.textContent = label;
+
+    if (globe) globe.rotateTo(newIndex);
   }
 
   function update() {
     ticking = false;
 
-    const rect    = journey.getBoundingClientRect();
-    const total   = journey.offsetHeight - window.innerHeight;
+    const rect     = journey.getBoundingClientRect();
+    const total    = journey.offsetHeight - window.innerHeight;
     const scrolled = Math.max(0, -rect.top);
     const progress = total > 0 ? Math.min(1, scrolled / total) : 0;
 
-    // Which stop is active. Adding 0.22 shifts each threshold earlier so
-    // the dot activates before the user has scrolled exactly to its boundary.
     const rawFloat = progress * NUM_STOPS;
     const newIndex = Math.min(Math.floor(rawFloat + 0.22), NUM_STOPS - 1);
     setActive(newIndex);
 
-    // Draw path: fully drawn by the time the last stop is reached (at progress ~0.75)
-    if (pathFill) {
-      const drawP = Math.min(1, progress / 0.75);
-      pathFill.style.strokeDashoffset = String(pathLength * (1 - drawP));
-    }
-
-    // Scrubber
     if (scrubFill) scrubFill.style.width = `${progress * 100}%`;
   }
 
@@ -150,14 +335,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window.addEventListener("scroll", onScroll, { passive: true });
-  window.addEventListener("resize", () => {
-    // Recalculate path length on resize (layout may shift)
-    if (pathFill) {
-      pathLength = pathFill.getTotalLength();
-      pathFill.style.strokeDasharray = String(pathLength);
-    }
-    update();
-  });
+  window.addEventListener("resize", update);
 
   update();
 });

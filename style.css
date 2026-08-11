@@ -410,102 +410,19 @@ a { color: inherit; text-decoration: none; }
   transition: width 0.08s linear;
 }
 
-/* Right panel: SVG */
+/* Right panel: globe canvas */
 .journey__right {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 60px 0 60px 40px;
+  position: relative;
+  overflow: hidden;
   border-left: 1px solid var(--ink-line);
 }
 
-.journey__svg {
+#globe-canvas {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: auto;
-  max-height: 78vh;
-  overflow: visible;
-}
-
-/* SVG internals */
-.journey__bg-ring {
-  fill: none;
-  stroke: var(--ink-line);
-  stroke-width: 0.75;
-  opacity: 0.6;
-}
-.journey__bg-ring--sm {
-  opacity: 0.4;
-}
-
-.journey__grid {
-  stroke: var(--ink-line);
-  stroke-width: 0.5;
-  opacity: 0.35;
-}
-
-.journey__path-track {
-  fill: none;
-  stroke: var(--ink-line);
-  stroke-width: 1;
-  opacity: 0.5;
-}
-
-.journey__path-fill {
-  fill: none;
-  stroke: var(--accent);
-  stroke-width: 2;
-  stroke-linecap: round;
-  transition: stroke-dashoffset 1s var(--ease);
-}
-
-/* Waypoint groups */
-.journey__wp-outer {
-  fill: none;
-  stroke: var(--accent);
-  stroke-width: 0.75;
-  opacity: 0;
-  transition: opacity 0.5s var(--ease);
-}
-.journey__wp-inner {
-  fill: none;
-  stroke: var(--accent);
-  stroke-width: 0.75;
-  opacity: 0;
-  transition: opacity 0.5s var(--ease);
-}
-.journey__wp-core {
-  fill: var(--ink-line);
-  transition: fill 0.4s var(--ease);
-}
-.journey__wp-text {
-  font-size: 9px;
-  fill: var(--paper-dim);
-  font-family: sans-serif;
-  letter-spacing: 0.07em;
-  opacity: 0;
-  transition: opacity 0.5s var(--ease);
-}
-
-.journey__wp.is-active .journey__wp-outer { opacity: 0.35; }
-.journey__wp.is-active .journey__wp-inner { opacity: 0.65; }
-.journey__wp.is-active .journey__wp-core  { fill: var(--accent); }
-.journey__wp.is-active .journey__wp-text  { opacity: 1; }
-
-.journey__wp.is-active .journey__wp-outer {
-  animation: wp-pulse 2.4s ease-in-out infinite;
-}
-.journey__wp.is-active .journey__wp-inner {
-  animation: wp-pulse-inner 2.4s ease-in-out infinite;
-  animation-delay: 0.3s;
-}
-
-@keyframes wp-pulse {
-  0%, 100% { opacity: 0.15; }
-  50%       { opacity: 0.45; }
-}
-@keyframes wp-pulse-inner {
-  0%, 100% { opacity: 0.45; }
-  50%       { opacity: 0.75; }
+  height: 100%;
+  display: block;
 }
 
 @media (max-width: 860px) {
@@ -770,4 +687,10 @@ a { color: inherit; text-decoration: none; }
   .hero__actions,
   .hero__foot { opacity: 1; transform: none; }
   .journey__stop { opacity: 1; transform: none; position: relative; }
+}
+
+
+
+.highlight {
+  color: var(--accent);
 }
