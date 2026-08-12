@@ -729,7 +729,7 @@ body[data-theme="light"] .nav {
 /* ---------------------------------------------
    Projects: full-screen scroll
 --------------------------------------------- */
-.projects-scroll { height: calc(6 * 200vh); }
+.projects-scroll { height: calc(7 * 200vh); }
 
 .projects-stage {
   position: sticky;
