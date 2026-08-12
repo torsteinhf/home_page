@@ -102,12 +102,14 @@ a { color: inherit; text-decoration: none; }
   border: none;
   cursor: pointer;
   color: var(--paper-dim);
-  font-size: 25px;
-  line-height: 1;
-  padding: 4px 6px;
+  padding: 6px;
+  line-height: 0;
+  display: flex;
+  align-items: center;
   transition: color 0.25s var(--ease);
 }
 .nav__theme:hover { color: var(--paper); }
+.nav__theme svg { display: block; }
 
 .nav__cv {
   border: 1px solid var(--ink-line);
@@ -464,11 +466,28 @@ body[data-theme="light"] .nav {
 }
 
 @media (max-width: 860px) {
+  /* Disable sticky scroll — show all stops as a plain vertical list */
+  .journey { height: auto; }
+  .journey__stage { position: relative; height: auto; overflow: visible; }
   .journey__layout { grid-template-columns: 1fr; }
   .journey__right { display: none; }
   .journey__left { padding: 80px 0 60px; }
-  .journey__stop { opacity: 1; transform: none; }
-  .journey__ghost-num { font-size: 55vw; }
+
+  .journey__stops-wrap { position: relative; height: auto; }
+  .journey__stop {
+    position: relative;
+    inset: auto;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    padding-bottom: 52px;
+  }
+  .journey__stop:last-child { padding-bottom: 0; }
+
+  /* Hide desktop-only chrome */
+  .journey__ghost-num { display: none; }
+  .journey__meta { display: none; }
+  .journey__scrubber { display: none; }
 }
 
 /* ---------------------------------------------
