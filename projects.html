@@ -33,84 +33,231 @@
 
   <div class="page-header">
     <p class="eyebrow reveal">SELECTED WORK</p>
-    <h1 class="page-header__title reveal">Projects</h1>
-    <p class="page-header__lead reveal">A few things I've built. WIP...</p>
+    <h1 class="page-header__title reveal">Projects - Scroll w/ images or as list</h1>
   </div>
 
-  <section class="section">
-    <div class="project-grid">
+  <div class="view-toggle-wrap reveal">
+    <div class="view-toggle" role="group" aria-label="View mode">
+      <button class="view-btn is-active" data-view="scroll" aria-pressed="true">Scroll</button>
+      <button class="view-btn" data-view="list" aria-pressed="false">List</button>
+    </div>
+  </div>
 
-      <!-- PLACEHOLDER PROJECT 1 — replace title, description, stack tags and GitHub link -->
-      <article class="project-card reveal">
-        <p class="project-card__tag">Project One</p>
-        <h3>PID-controller</h3>
-        <p>JAX-controller project, using one PID-controller and one Neural Nets-controller. The plants used were a Bathtub plant, a Thermostat plant, and a Cournot market competiotion plant.</p>
-        <div class="project-card__stack">
-          <span class="tag tag--sm">JAX</span>
-          <span class="tag tag--sm">Neural Nets</span>
+  <section class="projects-list">
+    <ol class="plist">
+      <li class="plist__row">
+        <span class="plist__num">01</span>
+        <div class="plist__body">
+          <p class="plist__tags">Python · Reinforcement Learning · Neural Nets</p>
+          <h3 class="plist__title">MuZero Knockoff</h3>
+          <p class="plist__desc">From-scratch reimplementation of DeepMind's MuZero applied to 2048. Three neural networks trained jointly through backpropagation through time — the agent improves entirely through self-play without ever being told the rules.</p>
         </div>
-        <a class="project-card__link" href="https://github.com/torsteinhf/pidcontroller" target="_blank" rel="noopener">View on GitHub →</a>
-      </article>
-
-      <!-- PLACEHOLDER PROJECT 2 -->
-      <article class="project-card reveal">
-        <p class="project-card__tag">Project Two</p>
-        <h3>MuZero Knockoff</h3>
-        <p>A from-scratch reimplementation of DeepMind's MuZero, applied to 2048. 
-          Three neural networks are trained jointly through backpropagation through time, 
-          letting the agent improve entirely through self-play reinforcement learning, without ever being told the rules directly.</p>
-        <div class="project-card__stack">
-          <span class="tag tag--sm">RL</span>
-          <span class="tag tag--sm">Neural Nets</span>
+        <a class="plist__link" href="https://github.com/torsteinhf/mu_zero_knockoff" target="_blank" rel="noopener">GitHub →</a>
+      </li>
+      <li class="plist__row">
+        <span class="plist__num">02</span>
+        <div class="plist__body">
+          <p class="plist__tags">PyTorch · MONAI · Computer Vision</p>
+          <h3 class="plist__title">Medical Image Analysis</h3>
+          <p class="plist__desc">Computer Vision final project using MONAI to analyze 3D medical scans for breast cancer detection. Compared DenseNet and ResNet architectures for the Odelia 2025 grand challenge.</p>
         </div>
-        <a class="project-card__link" href="https://github.com/torsteinhf/mu_zero_knockoff" target="_blank" rel="noopener">View on GitHub →</a>
-      </article>
-
-      <article class="project-card reveal">
-        <p class="project-card__tag">Project Three</p>
-        <h3>F1 DNF Analysis</h3>
-        <p>Analysis and modelling of DNF (Did Not Finish) outcomes in Formula 1 using historical race data. Used to test out models as SVM, Random Forest, LogReg and NNs. Completed as a group project with four others as a part of MECENG278 at UC Berkeley.</p>
-        <div class="project-card__stack">
-          <span class="tag tag--sm">MECENG278</span>
-          <span class="tag tag--sm">ML</span>
+        <a class="plist__link" href="https://odelia2025.grand-challenge.org/" target="_blank" rel="noopener">Odelia 2025 →</a>
+      </li>
+      <li class="plist__row">
+        <span class="plist__num">03</span>
+        <div class="plist__body">
+          <p class="plist__tags">HTML · CSS · JavaScript · D3.js</p>
+          <h3 class="plist__title">Home Page</h3>
+          <p class="plist__desc">This website — a personal portfolio with CV and project showcase. Features a D3.js orthographic globe, scroll-driven journey section, full-screen project viewer, and dark/light theme toggle.</p>
         </div>
-        <a class="project-card__link" href="#" target="_blank" rel="noopener">View on GitHub →</a>
-      </article>
-
-      <article class="project-card reveal">
-        <p class="project-card__tag">Project Four</p>
-        <h3>Airport DB</h3>
-        <p>Simulation of an airport DB, using SQL in "backend" and Python with a CLI as the user interface. Built from a Relation Schema in a DBMS class TDT4145</p>
-        <div class="project-card__stack">
-          <span class="tag tag--sm">SQL</span>
-          <span class="tag tag--sm">DBMS</span>
+        <a class="plist__link" href="https://github.com/torsteinhf/home_page" target="_blank" rel="noopener">GitHub →</a>
+      </li>
+      <li class="plist__row">
+        <span class="plist__num">04</span>
+        <div class="plist__body">
+          <p class="plist__tags">Python · ML · Data Analysis</p>
+          <h3 class="plist__title">F1 DNF Analysis</h3>
+          <p class="plist__desc">Analysis and modelling of Did Not Finish outcomes in Formula 1 using historical race data. Tested SVM, Random Forest, Logistic Regression, and Neural Nets. Group project for MECENG278 at UC Berkeley.</p>
         </div>
-        <a class="project-card__link" href="https://github.com/torsteinhf/airport_db" target="_blank" rel="noopener">View on GitHub →</a>
-      </article>
-
-
-      <article class="project-card reveal">
-        <p class="project-card__tag">Project Five</p>
-        <h3>Home Page</h3>
-        <p>My "home page" for my CV, project overview, etc. Will have additions by time. Also a place to test out interactive/dynamic website features.</p>
-        <div class="project-card__stack">
-          <span class="tag tag--sm">Webdev</span>
-          <span class="tag tag--sm">Hobby</span>
+        <a class="plist__link" href="#" target="_blank" rel="noopener">GitHub →</a>
+      </li>
+      <li class="plist__row">
+        <span class="plist__num">05</span>
+        <div class="plist__body">
+          <p class="plist__tags">SQL · Python · DBMS</p>
+          <h3 class="plist__title">Airport DB</h3>
+          <p class="plist__desc">Airport database simulation using a SQL backend and Python CLI interface. Built from a Relational Schema as part of TDT4145 Database Management Systems at NTNU.</p>
         </div>
-        <a class="project-card__link" href="https://github.com/torsteinhf/home_page" target="_blank" rel="noopener">View on GitHub →</a>
-      </article>
-      
-      <article class="project-card reveal">
-        <p class="project-card__tag">Project Six</p>
-        <h3>Medical Image Analysis</h3>
-        <p>Computer Vision class final project. Used MONAI as the framework for analyzing 3D medical scans to detect breast cancer. Later used through different DenseNets / ResNets to pick out the best model for submission.</p>
-        <div class="project-card__stack">
-          <span class="tag tag--sm">PyTorch</span>
-          <span class="tag tag--sm">Monai</span>
+        <a class="plist__link" href="https://github.com/torsteinhf/airport_db" target="_blank" rel="noopener">GitHub →</a>
+      </li>
+      <li class="plist__row">
+        <span class="plist__num">06</span>
+        <div class="plist__body">
+          <p class="plist__tags">Python · JAX · Neural Nets</p>
+          <h3 class="plist__title">PID-controller</h3>
+          <p class="plist__desc">JAX-based controller project comparing a classical PID-controller against a Neural Net controller across three plants: Bathtub, Thermostat, and Cournot market competition.</p>
         </div>
-        <a class="project-card__link" href="https://odelia2025.grand-challenge.org/" target="_blank" rel="noopener">View Odelia 2025 challenge →</a>
-      </article>
+        <a class="plist__link" href="https://github.com/torsteinhf/pidcontroller" target="_blank" rel="noopener">GitHub →</a>
+      </li>
+    </ol>
+  </section>
 
+  <section class="projects-scroll">
+    <div class="projects-stage">
+      <div class="projects-layout">
+
+        <!-- LEFT: project info panels -->
+        <div class="projects-left">
+
+          <div class="projects-meta">
+            <span class="projects-meta-label">Work</span>
+            <div class="projects-counter">
+              <span class="projects-num">01</span>
+              <span class="projects-of">/ 06</span>
+            </div>
+          </div>
+
+          <div class="projects-ghost-num" aria-hidden="true">01</div>
+
+          <div class="projects-info-wrap">
+
+            <div class="project-info is-active" data-index="0">
+              <p class="project-info__tags">Python · Reinforcement Learning · Neural Nets</p>
+              <h2 class="project-info__title">MuZero Knockoff</h2>
+              <p class="project-info__desc">From-scratch reimplementation of DeepMind's MuZero applied to 2048. Three neural networks trained jointly through backpropagation through time — the agent improves entirely through self-play without ever being told the rules.</p>
+              <a class="project-info__link" href="https://github.com/torsteinhf/mu_zero_knockoff" target="_blank" rel="noopener">View on GitHub →</a>
+            </div>
+
+            <div class="project-info" data-index="1">
+              <p class="project-info__tags">PyTorch · MONAI · Computer Vision</p>
+              <h2 class="project-info__title">Medical Image Analysis</h2>
+              <p class="project-info__desc">Computer Vision final project using MONAI to analyze 3D medical scans for breast cancer detection. Compared DenseNet and ResNet architectures for the Odelia 2025 grand challenge.</p>
+              <a class="project-info__link" href="https://odelia2025.grand-challenge.org/" target="_blank" rel="noopener">View Odelia Challenge 2025 →</a>
+            </div>
+
+            <div class="project-info" data-index="2">
+              <p class="project-info__tags">HTML · CSS · JavaScript · D3.js</p>
+              <h2 class="project-info__title">Home Page</h2>
+              <p class="project-info__desc">This website — a personal portfolio with CV and project showcase. Features a D3.js orthographic globe, scroll-driven journey section, full-screen project viewer, and dark/light theme toggle.</p>
+              <a class="project-info__link" href="https://github.com/torsteinhf/home_page" target="_blank" rel="noopener">View on GitHub →</a>
+            </div>
+
+            <div class="project-info" data-index="3">
+              <p class="project-info__tags">Python · ML · Data Analysis</p>
+              <h2 class="project-info__title">F1 DNF Analysis</h2>
+              <p class="project-info__desc">Analysis and modelling of Did Not Finish outcomes in Formula 1 using historical race data. Tested SVM, Random Forest, Logistic Regression, and Neural Nets. Group project for MECENG278 at UC Berkeley.</p>
+              <a class="project-info__link" href="#" target="_blank" rel="noopener">View on GitHub →</a>
+            </div>
+
+            <div class="project-info" data-index="4">
+              <p class="project-info__tags">SQL · Python · DBMS</p>
+              <h2 class="project-info__title">Airport DB</h2>
+              <p class="project-info__desc">Airport database simulation using a SQL backend and Python CLI interface. Built from a Relational Schema as part of TDT4145 Database Management Systems at NTNU.</p>
+              <a class="project-info__link" href="https://github.com/torsteinhf/airport_db" target="_blank" rel="noopener">View on GitHub →</a>
+            </div>
+
+            <div class="project-info" data-index="5">
+              <p class="project-info__tags">Python · JAX · Neural Nets</p>
+              <h2 class="project-info__title">PID-controller</h2>
+              <p class="project-info__desc">JAX-based controller project comparing a classical PID-controller against a Neural Net controller across three plants: Bathtub, Thermostat, and Cournot market competition.</p>
+              <a class="project-info__link" href="https://github.com/torsteinhf/pidcontroller" target="_blank" rel="noopener">View on GitHub →</a>
+            </div>
+
+          </div>
+
+          <div class="projects-scrubber">
+            <div class="projects-scrubber-fill"></div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT: image desk -->
+        <div class="projects-right">
+
+          <!-- 01 MuZero — 4 images, 2×2 scatter -->
+          <div class="project-images is-active" data-index="0">
+            <div class="desk">
+              <div class="desk-card" style="--cx:42%;--cy:47%;--rot:-3deg;--w:56%;--z:4">
+                <img src="imgs/muzero_architecture.png" alt="MuZero architecture diagram">
+              </div>
+              <div class="desk-card" style="--cx:71%;--cy:30%;--rot:8deg;--w:41%;--z:3">
+                <img src="imgs/muzero_mcts.png" alt="MuZero MCTS">
+              </div>
+              <div class="desk-card" style="--cx:68%;--cy:67%;--rot:-5deg;--w:39%;--z:2">
+                <img src="imgs/muzero_bptt.png" alt="MuZero backpropagation through time">
+              </div>
+              <div class="desk-card" style="--cx:22%;--cy:67%;--rot:4deg;--w:37%;--z:1">
+                <img src="imgs/muzero_implementation.png" alt="MuZero implementation">
+              </div>
+            </div>
+          </div>
+
+          <!-- 02 Medical — 3 images: large MRI left, two arch diagrams stacked right -->
+          <div class="project-images" data-index="1">
+            <div class="desk">
+              <div class="desk-card" style="--cx:40%;--cy:50%;--rot:-2deg;--w:52%;--z:3">
+                <img src="imgs/mri_scan.jpg" alt="MRI scan">
+              </div>
+              <div class="desk-card" style="--cx:70%;--cy:34%;--rot:7deg;--w:44%;--z:2">
+                <img src="imgs/densenet.avif" alt="DenseNet architecture">
+              </div>
+              <div class="desk-card" style="--cx:68%;--cy:67%;--rot:-6deg;--w:42%;--z:1">
+                <img src="imgs/resnet.png" alt="ResNet architecture">
+              </div>
+            </div>
+          </div>
+
+          <!-- 03 Home Page — 2 screenshots overlapping -->
+          <div class="project-images" data-index="2">
+            <div class="desk">
+              <div class="desk-card" style="--cx:43%;--cy:48%;--rot:-3deg;--w:64%;--z:2">
+                <img src="imgs/webpage_dark.png" alt="Website dark mode">
+              </div>
+              <div class="desk-card" style="--cx:62%;--cy:58%;--rot:5deg;--w:58%;--z:1">
+                <img src="imgs/webpage_light.png" alt="Website light mode">
+              </div>
+            </div>
+          </div>
+
+          <!-- 04 F1 DNF — 2 images -->
+          <div class="project-images" data-index="3">
+            <div class="desk">
+              <div class="desk-card" style="--cx:42%;--cy:47%;--rot:-3deg;--w:62%;--z:2">
+                <img src="imgs/f1_dnf_report_intro.png" alt="F1 DNF analysis report">
+              </div>
+              <div class="desk-card" style="--cx:65%;--cy:60%;--rot:6deg;--w:54%;--z:1">
+                <img src="imgs/f1.jpg" alt="F1 race">
+              </div>
+            </div>
+          </div>
+
+          <!-- 05 Airport DB — schema prominent, CLI peeking below -->
+          <div class="project-images" data-index="4">
+            <div class="desk">
+              <div class="desk-card" style="--cx:42%;--cy:46%;--rot:-4deg;--w:62%;--z:2">
+                <img src="imgs/airport_db_er_schema.png" alt="Airport DB ER schema">
+              </div>
+              <div class="desk-card" style="--cx:64%;--cy:61%;--rot:6deg;--w:52%;--z:1">
+                <img src="imgs/airport_db_cli.png" alt="Airport DB CLI interface">
+              </div>
+            </div>
+          </div>
+
+          <!-- 06 PID Controller — 2 images -->
+          <div class="project-images" data-index="5">
+            <div class="desk">
+              <div class="desk-card" style="--cx:42%;--cy:47%;--rot:-3deg;--w:62%;--z:2">
+                <img src="imgs/pid_report_intro.png" alt="PID Controller report">
+              </div>
+              <div class="desk-card" style="--cx:65%;--cy:60%;--rot:5deg;--w:54%;--z:1">
+                <img src="imgs/pid.png" alt="PID Controller results">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
     </div>
   </section>
 
