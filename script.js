@@ -1,5 +1,34 @@
+/* ---------------------------------------------
+   Theme toggle (runs before DOMContentLoaded
+   to avoid flash of wrong theme)
+--------------------------------------------- */
+(function () {
+  const saved = localStorage.getItem("theme") || "dark";
+  document.documentElement.dataset.theme = saved;
+})();
+
 document.addEventListener("DOMContentLoaded", () => {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------------------------------------------
+     Theme toggle
+  --------------------------------------------- */
+  const themeBtn = document.getElementById("theme-toggle");
+  const applyTheme = (theme) => {
+    document.body.dataset.theme = theme;
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem("theme", theme);
+    if (themeBtn) themeBtn.textContent = theme === "dark" ? "☀" : "☾";
+  };
+
+  applyTheme(localStorage.getItem("theme") || "dark");
+
+  if (themeBtn) {
+    themeBtn.addEventListener("click", () => {
+      const next = document.body.dataset.theme === "dark" ? "light" : "dark";
+      applyTheme(next);
+    });
+  }
 
   /* ---------------------------------------------
      Hero: character-stagger animation
@@ -126,6 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const { w, h } = cssSize();
       const baseR = Math.min(w, h) * 1.35;
       const r = baseR * scaleFactor;
+      const light = document.body.dataset.theme === "light";
 
       projection.scale(r).rotate(rotation).translate([w / 2, h / 2]);
 
@@ -134,29 +164,29 @@ document.addEventListener("DOMContentLoaded", () => {
       // Ocean
       ctx.beginPath();
       pathGen({ type: "Sphere" });
-      ctx.fillStyle = "#090909";
+      ctx.fillStyle = light ? "#d6d3cc" : "#090909";
       ctx.fill();
 
       // Graticule
       ctx.beginPath();
       pathGen(graticuleFeature);
-      ctx.strokeStyle = "rgba(255,255,255,0.045)";
+      ctx.strokeStyle = light ? "rgba(0,0,0,0.07)" : "rgba(255,255,255,0.045)";
       ctx.lineWidth = 0.5;
       ctx.stroke();
 
       // Land
       ctx.beginPath();
       pathGen(landFeature);
-      ctx.fillStyle = "#1c1c1c";
+      ctx.fillStyle = light ? "#c2bfb8" : "#1c1c1c";
       ctx.fill();
-      ctx.strokeStyle = "#2a2a2a";
+      ctx.strokeStyle = light ? "#b0ada6" : "#2a2a2a";
       ctx.lineWidth = 0.5;
       ctx.stroke();
 
       // Globe outline
       ctx.beginPath();
       pathGen({ type: "Sphere" });
-      ctx.strokeStyle = "rgba(255,255,255,0.08)";
+      ctx.strokeStyle = light ? "rgba(0,0,0,0.12)" : "rgba(255,255,255,0.08)";
       ctx.lineWidth = 1;
       ctx.stroke();
 
@@ -167,37 +197,41 @@ document.addEventListener("DOMContentLoaded", () => {
         const [px, py] = pt;
         const pulse = (Math.sin(pulseT) + 1) / 2;
 
+        // Dot colors — darker in light mode for contrast
+        const dotRgb   = light ? "130,24,40"  : "94,143,110";
+        const dotSolid = light ? "#821828"     : "#5e8f6e";
+
         // Outer glow ring
         ctx.beginPath();
         ctx.arc(px, py, 13 + pulse * 5, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(94,143,110,${0.10 + pulse * 0.12})`;
+        ctx.strokeStyle = `rgba(${dotRgb},${0.18 + pulse * 0.15})`;
         ctx.lineWidth = 1;
         ctx.stroke();
 
         // Inner ring
         ctx.beginPath();
         ctx.arc(px, py, 7, 0, Math.PI * 2);
-        ctx.strokeStyle = "rgba(94,143,110,0.5)";
+        ctx.strokeStyle = `rgba(${dotRgb},0.6)`;
         ctx.lineWidth = 1;
         ctx.stroke();
 
         // Core dot
         ctx.beginPath();
         ctx.arc(px, py, 3.5, 0, Math.PI * 2);
-        ctx.fillStyle = "#5e8f6e";
+        ctx.fillStyle = dotSolid;
         ctx.fill();
 
         // Label with connector line
         ctx.beginPath();
         ctx.moveTo(px + 14, py);
         ctx.lineTo(px + 26, py);
-        ctx.strokeStyle = "rgba(94,143,110,0.55)";
+        ctx.strokeStyle = `rgba(${dotRgb},0.65)`;
         ctx.lineWidth = 0.75;
         ctx.stroke();
 
         ctx.font = "10px 'IBM Plex Mono', monospace";
         if ("letterSpacing" in ctx) ctx.letterSpacing = "0.08em";
-        ctx.fillStyle = "rgba(237,234,227,0.7)";
+        ctx.fillStyle = light ? "rgba(13,13,13,0.7)" : "rgba(237,234,227,0.7)";
         ctx.textBaseline = "middle";
         ctx.fillText(GLOBE_LABELS[currentStopIdx], px + 31, py);
       }

@@ -21,7 +21,10 @@
     <a href="cv.html">CV</a>
     <a href="projects.html" class="is-active">Projects</a>
   </nav>
-  <a class="nav__cv" href="torstein-hauge-fossnes-cv.pdf" target="_blank" rel="noopener">Download CV ↓</a>
+  <div class="nav__right">
+    <button class="nav__theme" id="theme-toggle" aria-label="Toggle theme"></button>
+    <a class="nav__cv" href="torstein-hauge-fossnes-cv.pdf" target="_blank" rel="noopener">Download CV ↓</a>
+  </div>
 </header>
 
 <main>
@@ -29,7 +32,7 @@
   <div class="page-header">
     <p class="eyebrow reveal">SELECTED WORK</p>
     <h1 class="page-header__title reveal">Projects</h1>
-    <p class="page-header__lead reveal">A few things I've built. Write-ups and links coming soon — this page is a placeholder until it's filled in.</p>
+    <p class="page-header__lead reveal">A few things I've built. WIP...</p>
   </div>
 
   <section class="section">
@@ -37,48 +40,73 @@
 
       <!-- PLACEHOLDER PROJECT 1 — replace title, description, stack tags and GitHub link -->
       <article class="project-card reveal">
-        <p class="project-card__tag">Project</p>
-        <h3>Project One</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, replace with a short description of what this project does and why you built it.</p>
+        <p class="project-card__tag">Project One</p>
+        <h3>PID-controller</h3>
+        <p>JAX-controller project, using one PID-controller and one Neural Nets-controller. The plants used were a Bathtub plant, a Thermostat plant, and a Cournot market competiotion plant.</p>
         <div class="project-card__stack">
-          <span class="tag tag--sm">Placeholder</span>
-          <span class="tag tag--sm">Placeholder</span>
+          <span class="tag tag--sm">JAX</span>
+          <span class="tag tag--sm">Neural Nets</span>
         </div>
-        <a class="project-card__link" href="#" target="_blank" rel="noopener">View on GitHub →</a>
+        <a class="project-card__link" href="https://github.com/torsteinhf/pidcontroller" target="_blank" rel="noopener">View on GitHub →</a>
       </article>
 
       <!-- PLACEHOLDER PROJECT 2 -->
       <article class="project-card reveal">
-        <p class="project-card__tag">Project</p>
-        <h3>Project Two</h3>
-        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Replace with a short description of what this project does and why you built it.</p>
+        <p class="project-card__tag">Project Two</p>
+        <h3>MuZero Knockoff</h3>
+        <p>A from-scratch reimplementation of DeepMind's MuZero, applied to 2048. 
+          Three neural networks are trained jointly through backpropagation through time, 
+          letting the agent improve entirely through self-play reinforcement learning, without ever being told the rules directly.</p>
         <div class="project-card__stack">
-          <span class="tag tag--sm">Placeholder</span>
-          <span class="tag tag--sm">Placeholder</span>
+          <span class="tag tag--sm">RL</span>
+          <span class="tag tag--sm">Neural Nets</span>
+        </div>
+        <a class="project-card__link" href="https://github.com/torsteinhf/mu_zero_knockoff" target="_blank" rel="noopener">View on GitHub →</a>
+      </article>
+
+      <article class="project-card reveal">
+        <p class="project-card__tag">Project Three</p>
+        <h3>F1 DNF Analysis</h3>
+        <p>Analysis and modelling of DNF (Did Not Finish) outcomes in Formula 1 using historical race data. Used to test out models as SVM, Random Forest, LogReg and NNs. Completed as a group project with four others as a part of MECENG278 at UC Berkeley.</p>
+        <div class="project-card__stack">
+          <span class="tag tag--sm">MECENG278</span>
+          <span class="tag tag--sm">ML</span>
         </div>
         <a class="project-card__link" href="#" target="_blank" rel="noopener">View on GitHub →</a>
       </article>
 
-      <!-- PLACEHOLDER PROJECT 3 -->
       <article class="project-card reveal">
-        <p class="project-card__tag">Project</p>
-        <h3>Project Three</h3>
-        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Replace with a short description of what this project does and why you built it.</p>
+        <p class="project-card__tag">Project Four</p>
+        <h3>Airport DB</h3>
+        <p>Simulation of an airport DB, using SQL in "backend" and Python with a CLI as the user interface. Built from a Relation Schema in a DBMS class TDT4145</p>
         <div class="project-card__stack">
-          <span class="tag tag--sm">Placeholder</span>
-          <span class="tag tag--sm">Placeholder</span>
+          <span class="tag tag--sm">SQL</span>
+          <span class="tag tag--sm">DBMS</span>
         </div>
-        <a class="project-card__link" href="#" target="_blank" rel="noopener">View on GitHub →</a>
+        <a class="project-card__link" href="https://github.com/torsteinhf/airport_db" target="_blank" rel="noopener">View on GitHub →</a>
       </article>
+
+
       <article class="project-card reveal">
-        <p class="project-card__tag">Project</p>
-        <h3>Project Three</h3>
-        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Replace with a short description of what this project does and why you built it.</p>
+        <p class="project-card__tag">Project Five</p>
+        <h3>Home Page</h3>
+        <p>My "home page" for my CV, project overview, etc. Will have additions by time. Also a place to test out interactive/dynamic website features.</p>
         <div class="project-card__stack">
-          <span class="tag tag--sm">Placeholder</span>
-          <span class="tag tag--sm">Placeholder</span>
+          <span class="tag tag--sm">Webdev</span>
+          <span class="tag tag--sm">Hobby</span>
         </div>
-        <a class="project-card__link" href="#" target="_blank" rel="noopener">View on GitHub →</a>
+        <a class="project-card__link" href="https://github.com/torsteinhf/home_page" target="_blank" rel="noopener">View on GitHub →</a>
+      </article>
+      
+      <article class="project-card reveal">
+        <p class="project-card__tag">Project Six</p>
+        <h3>Medical Image Analysis</h3>
+        <p>Computer Vision class final project. Used MONAI as the framework for analyzing 3D medical scans to detect breast cancer. Later used through different DenseNets / ResNets to pick out the best model for submission.</p>
+        <div class="project-card__stack">
+          <span class="tag tag--sm">PyTorch</span>
+          <span class="tag tag--sm">Monai</span>
+        </div>
+        <a class="project-card__link" href="https://odelia2025.grand-challenge.org/" target="_blank" rel="noopener">View Odelia 2025 challenge →</a>
       </article>
 
     </div>
