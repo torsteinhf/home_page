@@ -98,13 +98,13 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       /* Globe */
       const GLOBE_STOPS = [
-        [10.8,   59.7],
-        [10.7,   59.9],
-        [10.4,   63.4],
-        [-122.3, 37.9],
         [8.5,    47.4],
+        [-122.3, 37.9],
+        [10.4,   63.4],
+        [10.7,   59.9],
+        [10.8,   59.7],
       ];
-      const GLOBE_LABELS = ["ÅS", "OSLO", "TRONDHEIM", "BERKELEY", "ZÜRICH"];
+      const GLOBE_LABELS = ["ZÜRICH", "BERKELEY", "TRONDHEIM", "OSLO", "ÅS"];
 
       function initGlobe(canvas) {
         const ctx = canvas.getContext("2d");
