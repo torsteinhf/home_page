@@ -65,7 +65,7 @@ a { color: inherit; text-decoration: none; }
   background: linear-gradient(to bottom, rgba(13,13,13,0.9), rgba(13,13,13,0));
 }
 
-.nav__mark { font-weight: 600; font-size: 24px; color: var(--paper-dim); transition: color 0.25s var(--ease); }
+.nav__mark { display: flex; align-items: center; color: var(--paper-dim); transition: color 0.25s var(--ease); line-height: 0; }
 .nav__mark:hover { color: var(--paper); }
 
 .nav__links { display: flex; gap: 28px; }

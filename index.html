@@ -8,9 +8,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="icon" href="favicon.ico">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" href="/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/style.css">
 <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
 </head>
@@ -19,15 +20,19 @@
 <div class="grain"></div>
 
 <header class="nav">
-  <a class="nav__mark" href="index.html">THF</a>
+  <a class="nav__mark" href="/" aria-label="Home">
+    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="26" viewBox="0 0 38 26" fill="none" aria-hidden="true">
+      <path d="M1 2.5H37M11 2.5V23.5M27 2.5V23.5M11 14H27" stroke="currentColor" stroke-width="3.5" stroke-linecap="square"/>
+    </svg>
+  </a>
   <nav class="nav__links">
-    <a href="index.html" class="is-active">Home</a>
-    <a href="cv.html">CV</a>
-    <a href="projects.html">Projects</a>
+    <a href="/" class="is-active">Home</a>
+    <a href="/cv/">CV</a>
+    <a href="/projects/">Projects</a>
   </nav>
   <div class="nav__right">
     <button class="nav__theme" id="theme-toggle" aria-label="Toggle theme"></button>
-    <a class="nav__cv" href="torstein-hauge-fossnes-cv.pdf" target="_blank" rel="noopener">Download CV ↓</a>
+    <a class="nav__cv" href="/torstein-hauge-fossnes-cv.pdf" target="_blank" rel="noopener">Download CV ↓</a>
   </div>
 </header>
 
@@ -48,7 +53,7 @@
       <div class="hero__rule"></div>
       <p class="hero__sub">Specializing in AI/ML & Finance/Optimization.</p>
       <div class="hero__actions">
-        <a class="btn btn--primary" href="cv.html">View CV</a>
+        <a class="btn btn--primary" href="/cv/">View CV</a>
         <a class="btn btn--ghost" href="mailto:torsteinhf@gmail.com">Contact</a>
       </div>
     </div>
@@ -131,14 +136,14 @@
 
   <!-- CTA CARDS -->
   <div class="cta-row">
-    <a class="cta-card reveal" href="cv.html">
+    <a class="cta-card reveal" href="/cv/">
       <div>
         <h3>CV</h3>
         <p>Education, work experience, and technical skills — expanded.</p>
       </div>
       <span class="cta-card__arrow">View CV →</span>
     </a>
-    <a class="cta-card reveal" href="projects.html">
+    <a class="cta-card reveal" href="/projects/">
       <div>
         <h3>Projects</h3>
         <p>Things I've built, with write-ups and links to the code.</p>
@@ -158,6 +163,6 @@
   <p class="site-footer__note">Torstein Hauge Fossnes</p>
 </footer>
 
-<script src="script.js"></script>
+<script src="/script.js"></script>
 </body>
 </html>

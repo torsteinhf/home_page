@@ -8,24 +8,29 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="icon" href="favicon.ico">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" href="/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
 
 <div class="grain"></div>
 
 <header class="nav">
-  <a class="nav__mark" href="index.html">THF</a>
+  <a class="nav__mark" href="/" aria-label="Home">
+    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="26" viewBox="0 0 38 26" fill="none" aria-hidden="true">
+      <path d="M1 2.5H37M11 2.5V23.5M27 2.5V23.5M11 14H27" stroke="currentColor" stroke-width="3.5" stroke-linecap="square"/>
+    </svg>
+  </a>
   <nav class="nav__links">
-    <a href="index.html">Home</a>
-    <a href="cv.html">CV</a>
-    <a href="projects.html" class="is-active">Projects</a>
+    <a href="/">Home</a>
+    <a href="/cv/">CV</a>
+    <a href="/projects/" class="is-active">Projects</a>
   </nav>
   <div class="nav__right">
     <button class="nav__theme" id="theme-toggle" aria-label="Toggle theme"></button>
-    <a class="nav__cv" href="torstein-hauge-fossnes-cv.pdf" target="_blank" rel="noopener">Download CV ↓</a>
+    <a class="nav__cv" href="/torstein-hauge-fossnes-cv.pdf" target="_blank" rel="noopener">Download CV ↓</a>
   </div>
 </header>
 
@@ -185,16 +190,16 @@
           <div class="project-images is-active" data-index="0">
             <div class="desk">
               <div class="desk-card" style="--cx:42%;--cy:47%;--rot:-3deg;--w:56%;--z:4">
-                <img src="imgs/muzero_architecture.png" alt="MuZero architecture diagram">
+                <img src="/imgs/muzero_architecture.png" alt="MuZero architecture diagram">
               </div>
               <div class="desk-card" style="--cx:71%;--cy:30%;--rot:8deg;--w:41%;--z:3">
-                <img src="imgs/muzero_mcts.png" alt="MuZero MCTS">
+                <img src="/imgs/muzero_mcts.png" alt="MuZero MCTS">
               </div>
               <div class="desk-card" style="--cx:68%;--cy:67%;--rot:-5deg;--w:39%;--z:2">
-                <img src="imgs/muzero_bptt.png" alt="MuZero backpropagation through time">
+                <img src="/imgs/muzero_bptt.png" alt="MuZero backpropagation through time">
               </div>
               <div class="desk-card" style="--cx:22%;--cy:67%;--rot:4deg;--w:37%;--z:1">
-                <img src="imgs/muzero_implementation.png" alt="MuZero implementation">
+                <img src="/imgs/muzero_implementation.png" alt="MuZero implementation">
               </div>
             </div>
           </div>
@@ -203,10 +208,10 @@
           <div class="project-images" data-index="1">
             <div class="desk">
               <div class="desk-card" style="--cx:35%;--cy:40%;--rot:7deg;--w:62%;--z:4">
-                <img src="imgs/mri_augmentation.png" alt="MRI data augmentation">
+                <img src="/imgs/mri_augmentation.png" alt="MRI data augmentation">
               </div>
               <div class="desk-card" style="--cx:71%;--cy:66%;--rot:-5deg;--w:52%;--z:3">
-                <img src="imgs/mri_results.png" alt="MRI model results">
+                <img src="/imgs/mri_results.png" alt="MRI model results">
               </div>
             </div>
           </div>
@@ -215,10 +220,10 @@
           <div class="project-images" data-index="2">
             <div class="desk">
               <div class="desk-card" style="--cx:43%;--cy:48%;--rot:-3deg;--w:64%;--z:2">
-                <img src="imgs/webpage_dark.png" alt="Website dark mode">
+                <img src="/imgs/webpage_dark.png" alt="Website dark mode">
               </div>
               <div class="desk-card" style="--cx:62%;--cy:58%;--rot:5deg;--w:58%;--z:1">
-                <img src="imgs/webpage_light.png" alt="Website light mode">
+                <img src="/imgs/webpage_light.png" alt="Website light mode">
               </div>
             </div>
           </div>
@@ -227,10 +232,10 @@
           <div class="project-images" data-index="3">
             <div class="desk">
               <div class="desk-card" style="--cx:62%;--cy:48%;--rot:-3deg;--w:64%;--z:2">
-                <img src="imgs/f1_dnf_report_intro.png" alt="F1 DNF analysis report">
+                <img src="/imgs/f1_dnf_report_intro.png" alt="F1 DNF analysis report">
               </div>
               <div class="desk-card" style="--cx:43%;--cy:58%;--rot:5deg;--w:45%;--z:1">
-                <img src="imgs/berkeley.jpg" alt="Berkeley image">
+                <img src="/imgs/berkeley.jpg" alt="Berkeley image">
               </div>
             </div>
           </div>
@@ -239,13 +244,13 @@
           <div class="project-images" data-index="4">
             <div class="desk">
               <div class="desk-card" style="--cx:42%;--cy:46%;--rot:-4deg;--w:62%;--z:2">
-                <img src="imgs/airport_db_er_schema.png" alt="Airport DB ER schema">
+                <img src="/imgs/airport_db_er_schema.png" alt="Airport DB ER schema">
               </div>
               <div class="desk-card" style="--cx:64%;--cy:61%;--rot:6deg;--w:52%;--z:1">
-                <img src="imgs/airport_db_cli.png" alt="Airport DB CLI interface">
+                <img src="/imgs/airport_db_cli.png" alt="Airport DB CLI interface">
               </div>
               <div class="desk-card" style="--cx:70%;--cy:35%;--rot:2deg;--w:34%;--z:0">
-                <img src="imgs/trd.jpg" alt="Trondheim img">
+                <img src="/imgs/trd.jpg" alt="Trondheim img">
               </div>
             </div>
           </div>
@@ -254,7 +259,7 @@
           <div class="project-images" data-index="5">
             <div class="desk">
               <div class="desk-card" style="--cx:42%;--cy:47%;--rot:-3deg;--w:62%;--z:2">
-                <img src="imgs/pid_report_intro.png" alt="PID Controller report">
+                <img src="/imgs/pid_report_intro.png" alt="PID Controller report">
               </div>
             </div>
           </div>
@@ -263,16 +268,16 @@
           <div class="project-images" data-index="6">
             <div class="desk">
               <div class="desk-card" style="--cx:24%;--cy:35%;--rot:4deg;--w:40%;--z:2">
-                <img src="imgs/beer_mile_26_podium.jpg" alt="Beer Mile 2025 podium — Team Lynrask">
+                <img src="/imgs/beer_mile_26_podium.jpg" alt="Beer Mile 2025 podium — Team Lynrask">
               </div>
               <div class="desk-card" style="--cx:66%;--cy:60%;--rot:6deg;--w:62%;--z:3">
-                <img src="imgs/beer_mile_26_portrait.JPG" alt="Beer Mile 2025 — Team Lynrask">
+                <img src="/imgs/beer_mile_26_portrait.JPG" alt="Beer Mile 2025 — Team Lynrask">
               </div>
               <div class="desk-card" style="--cx:30%;--cy:75%;--rot:-6deg;--w:38%;--z:1">
-                <img src="imgs/beer_mile_25.png" alt="Beer Mile 2025 — Team Lynrask">
+                <img src="/imgs/beer_mile_25.png" alt="Beer Mile 2025 — Team Lynrask">
               </div>
               <div class="desk-card" style="--cx:73%;--cy:40%;--rot:-2deg;--w:48%;--z:1">
-                <img src="imgs/beer_mile_26.png" alt="Beer Mile 2025 — Team Lynrask">
+                <img src="/imgs/beer_mile_26.png" alt="Beer Mile 2025 — Team Lynrask">
               </div>
             </div>
           </div>
@@ -294,6 +299,6 @@
   <p class="site-footer__note">Torstein Hauge Fossnes</p>
 </footer>
 
-<script src="script.js"></script>
+<script src="/script.js"></script>
 </body>
 </html>
