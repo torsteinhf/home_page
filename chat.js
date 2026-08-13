@@ -31,7 +31,7 @@
       {
         school: "BI Norwegian Business School",
         location: "Oslo, Norway",
-        period: "Aug 2023 – Jun 2024",
+        period: "Aug 2022 – Jun 2023",
         detail: "Bachelor's unit equivalent to first year of Business Administration. GPA 4.9/5.",
       },
       {
