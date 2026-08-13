@@ -306,7 +306,7 @@
     const header = el("div", "chat-header");
     const headerLeft = el("div", "chat-header__left");
     const dot = el("span", "chat-header__dot");
-    const title = el("span", "chat-header__title", "Ask me anything");
+    const title = el("span", "chat-header__title", "Ask me (almost) anything");
     headerLeft.appendChild(dot);
     headerLeft.appendChild(title);
     const closeBtn = el("button", "chat-close", `
