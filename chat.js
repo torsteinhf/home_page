@@ -13,7 +13,7 @@
       {
         school: "ETH Zürich",
         location: "Zürich, Switzerland",
-        period: "Expected Sep 2026 – Feb 2027",
+        period: "Sep 2026 – Feb 2027",
         detail: "Exchange program at D-MTEC.",
       },
       {
@@ -42,6 +42,13 @@
       },
     ],
     experience: [
+      {
+        role: "Product Manager (part-time)",
+        org: "Vespa.ai",
+        location: "Trondheim",
+        period: "Incoming, Feb 2027 – Jun 2027",
+        detail: "Incoming Product Manager at Vespa.ai, part-time alongside studies at NTNU.",
+      },
       {
         role: "Summer Intern",
         org: "KLP Asset Management",
@@ -226,6 +233,11 @@
       return lines;
     }
 
+    if (/vespa|product manager|\bpm\b/i.test(q)) {
+      const x = PORTFOLIO.experience.find((e) => e.org === "Vespa.ai");
+      return `${x.role} at ${x.org}, ${x.location} (${x.period}). ${x.detail}`;
+    }
+
     if (/klp|asset management|finance|equity/i.test(q)) {
       const x = PORTFOLIO.experience.find((e) => e.org === "KLP Asset Management");
       return `${x.role} at ${x.org}, ${x.period}. ${x.detail}`;
@@ -242,7 +254,7 @@
     }
 
     if (/who|about|torstein|yourself/i.test(q)) {
-      return `Torstein Hauge Fossnes is an MSc student in Industrial Economics & Computer Science at NTNU, specializing in AI/ML and Finance. He's studied at UC Berkeley and is heading to ETH Zürich on exchange. ${PORTFOLIO.availability}.`;
+      return `Torstein Hauge Fossnes is an MSc student in Industrial Economics & Computer Science at NTNU, specializing in AI/ML and Finance. He's studied at UC Berkeley and is currently on exchange at ETH Zürich. ${PORTFOLIO.availability}.`;
     }
 
     if (/hello|hi |hey|hei|hola/i.test(q)) {
